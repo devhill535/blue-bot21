@@ -897,7 +897,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second`
+          `<@${message.author.id}>,  Please wait for 10 second`
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1117,40 +1117,62 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  //
-  if (message.content.startsWith(prefix + "serverinfo")) {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(
-          `<a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+bot.on("message", message => {
+  if (message.content.startsWith(prefix + "bot")) {
+    message.channel.send({
+      embed: new Discord.RichEmbed()
+        .setAuthor(bot.user.username, bot.user.avatarURL)   .setThumbnail(message.author.avatarURL)
+        .setColor("RANDOM")
+        .setTitle("**Info The Bot** ")
+        .addField(
+          "**My Ping**",
+          [`${Date.now() - message.createdTimestamp}` + "MS"],
+          true
         )
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    var EMBED = new Discord.MessageEmbed()
-      .setTitle("server info")
-      .addField("server name", `${message.guild.name}`)
-      .addField("server id", `${message.guild.id}`)
-      .addField("server owner", `${message.guild.owner}`)
-      .addField("members", `${message.guild.memberCount}`)
-      .addField("Server roles", `${message.guild.roles.cache.size}`)
-      .addField("server channels", `${message.guild.channels.cache.size}`)
-      .addField("server region", `${message.guild.region}`)
-      .addField("created in", `${message.guild.createdAt.toLocaleString()}`)
-      .addField("Boost", `${message.guild.premiumSubscriptionCount}`)
-      .setThumbnail(message.author.avatarURL())
-      .setColor("#808080")
-      .setFooter(`Requsted by ${message.author.username}`);
-    message.channel.send(EMBED);
+        .addField("**Owner Bot**", `<@758476332098650152>`, true)
+        .addField("**Servers**", [bot.guilds.size], true)
+        .addField("**Channels**", `[${bot.channels.size}]`, true)
+        .addField("**Users**", `[${bot.users.size}]`, true)
+        .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
+        .addField("**My ID**", `[ ${bot.user.id} ]`, true)
+        .addField(
+          "**My Prefix**",
+          `[b/]`,
+          true
+        )
+ 
+       .setFooter(message.author.username,message.author.avatarURL)
+ .setTimestamp()
+    });
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
+bot.on("message", message => {
+  if (message.content === "-about") {
+    const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+  .setThumbnail(message.author.avatarURL)  .setImage(`https://cdn.discordapp.com/attachments/703243461079597138/755709757398057062/image0-14.gif`)
+ .setFooter(message.author.username,message.author.avatarURL)
+ .setTimestamp()
+ .setDescription(`
+    \`𝖮𝗐𝗇𝖾𝗋 Id\`
+━━━━━━━━━━━━━━━━━━━━
+**758476332098650152**
+━━━━━━━━━━━━━━━━━━━━ 
+    \`𝖮𝗐𝗇𝖾𝗋 Bot\`
+━━━━━━━━━━━━━━━━━━━━    
+<@758476332098650152>
+━━━━━━━━━━━━━━━━━━━━
+   \`Creation Time\`
+━━━━━━━━━━━━━━━━━━━━
+                 **9/2/2021**
+
+ `);
+
+    message.channel.sendEmbed(embed);
+  }
+});
+//////////////////////////////////////////////////////////////////////////
 client.on("message", prof => {
   if (prof.content.startsWith(prefix + "userinfo")) {
     if (cooldown.has(prof.author.id)) {
