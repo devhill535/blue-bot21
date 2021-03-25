@@ -93,7 +93,7 @@ ${prefix}userinfo
 ${prefix}serverinfo
 ${prefix}invite
 ${prefix}support
-${prefix} setting
+${prefix}settings
 
 ** |Security**
 ${prefix}anti ban {number}
