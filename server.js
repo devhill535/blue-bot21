@@ -905,7 +905,7 @@ client.on("guildMemberRemove", async member => {
 
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
-  if (message.content === prefix + "setting") {
+  if (message.content === prefix + "settings") {
     return message.channel.send(
       "**you dont have a Permission**,<a:emoji_26:809385634149826611>"
     );
