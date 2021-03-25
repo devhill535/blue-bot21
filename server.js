@@ -1117,33 +1117,41 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-bot.on("message", message => {
-  if (message.content.startsWith(prefix + "about")) {
-    message.channel.send({
-      embed: new Discord.RichEmbed()
-        .setAuthor(bot.user.username, bot.user.avatarURL)   .setThumbnail(message.author.avatarURL)
-        .setColor("RANDOM")
-        .setTitle("**Info The Bot** ")
-        .addField(
-          "**My Ping**",
-          [`${Date.now() - message.createdTimestamp}` + "MS"],
-          true
+client.on("message", message => {
+  //
+  if (message.content.startsWith(prefix + "serverinfo")) {
+    if (cooldown.has(message.author.id)) {
+      return message.channel
+        .send(
+          `<a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
         )
-        .addField("**Owner Bot**", `<@758476332098650152>`, true)
-        .addField("**Servers**", [bot.guilds.size], true)
-        .addField("**Channels**", `[${bot.channels.size}]`, true)
-        .addField("**Users**", `[${bot.users.size}]`, true)
-        .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
-        .addField("**My ID**", `[ ${bot.user.id} ]`, true)
-        .addField(
-          "**My Prefix**",
-          `[b/]`,
-          true
-        )
- 
-       .setFooter(message.author.username,message.author.avatarURL)
- .setTimestamp()
-    });
+        .then(m => {
+          m.delete({ timeout: cdtime * 600 });
+        });
+    }
+    cooldown.add(message.author.id);
+    setTimeout(() => {
+      cooldown.delete(message.author.id);
+    }, cdtime * 1000);
+    var EMBED = new Discord.MessageEmbed()
+      .setTitle("server info")
+      .addField("server name", `${message.guild.name}`)
+      .addField("server id", `${message.guild.id}`)
+      .addField("server owner", `${message.guild.owner}`)
+      .addField("members", `${message.guild.memberCount}`)
+      .addField("Server roles", `${message.guild.roles.cache.size}`)
+      .addField("server channels", `${message.guild.channels.cache.size}`)
+      .addField("server region", `${message.guild.region}`)
+      .addField("created in", `${message.guild.createdAt.toLocaleString()}`)
+      .addField(
+        "Boost",
+        `${message.guild.premiumSubscriptionCount}`
+      )
+      .setThumbnail(message.author.avatarURL())
+      .setColor("#808080")
+      .setFooter(`Requsted by ${message.author.username}`);
+    message.channel.send(EMBED);
+    
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
@@ -1154,7 +1162,7 @@ client.on("message", prof => {
     if (cooldown.has(prof.author.id)) {
       return prof.channel
         .send(
-          `<@${prof.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${prof.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1187,7 +1195,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1217,7 +1225,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1260,33 +1268,36 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.content === prefix + "botinfo") {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+bot.on("message", message => {
+  if (message.content.startsWith(prefix + "about")) {
+    message.channel.send({
+      embed: new Discord.RichEmbed()
+        .setAuthor(bot.user.username, bot.user.avatarURL)   .setThumbnail(message.author.avatarURL)
+        .setColor("RANDOM")
+        .setTitle("**Info The Bot** ")
+        .addField(
+          "**My Ping**",
+          [`${Date.now() - message.createdTimestamp}` + "MS"],
+          true
         )
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    const embed = new Discord.MessageEmbed()
-      .setColor("RANDOM")
-        .addField("**Owner Bot**", `<@758476332098650152>`, true)
+        .addField("**Owner Bot**", `<@637299944939585576>`, true)
         .addField("**Servers**", [bot.guilds.size], true)
         .addField("**Channels**", `[${bot.channels.size}]`, true)
         .addField("**Users**", `[${bot.users.size}]`, true)
         .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
         .addField("**My ID**", `[ ${bot.user.id} ]`, true)
-       
-    message.channel.send(embed);
+        .addField(
+          "**My Prefix**",
+          `[-]`,
+          true
+        )
+ 
+       .setFooter(message.author.username,message.author.avatarURL)
+ .setTimestamp()
+    });
   }
 });
+
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content.startsWith(prefix + "warn")) {
