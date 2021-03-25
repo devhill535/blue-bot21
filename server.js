@@ -149,7 +149,7 @@ client.on("message", async message => {
   if (message.content.startsWith(prefix + "lock")) {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(`<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`)
+        .send(`<@${message.author.id}>, Please wait for 10 second`)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -170,13 +170,18 @@ client.on("message", async message => {
       SEND_MESSAGES: false
     });
     const lock = new Discord.MessageEmbed()
-       .setColor("RANDOM")
-      .setTitle(` 🔒 | Locked Channel
-Channel Status : Send Message : ❌ `)     
-      .setTimestamp()
-    SAEWAN.channel.sendEmbed(embed);
-  }
-
+      .setTitle(`CHANNEL LOCK`)
+      .setColor("#808080")
+      .setDescription(
+        `
+Locked Channel
+<#${message.channel.id}>
+locked by
+<@${message.author.id}>
+`
+      )
+      
+      
     message.channel.send(lock);
   }
 });
@@ -185,7 +190,7 @@ client.on("message", async message => {
   if (message.content.startsWith(prefix + "unlock")) {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(`<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`)
+        .send(`<@${message.author.id}>, Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -207,12 +212,15 @@ client.on("message", async message => {
     });
     const unlock = new Discord.MessageEmbed()
       
-     .setColor("RANDOM")
-     .setTitle(`🔓 | unlocked Channel
-Channel Status : Send Message : ✅`)
-    .setTimestamp()
-    SAEWAN.channel.sendEmbed(embed);
-  }
+      .setTitle(`CHANNEL UNLOCK`)
+      .setColor("#808080")
+      .setDescription(
+        `
+unloked Channel
+<#${message.channel.id}>
+unloked by
+<@${message.author.id}>
+`
       )
     message.channel.send(unlock);
   }
@@ -251,13 +259,13 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "anti")) {
     if (message.author.id !== message.guild.ownerID)
       return message.channel.send(
-        "**Just Can Online Ownership**,<a:emoji_26:809385634149826611>"
+        "**Just Can Online Ownership**,"
       );
     if (message.content.startsWith(prefix + "anti ban")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>,  Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
@@ -282,7 +290,7 @@ client.on("message", message => {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>, Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
@@ -307,7 +315,7 @@ client.on("message", message => {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>,  Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
