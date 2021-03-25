@@ -1268,30 +1268,33 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-bot.on("message", message => {
-  if (message.content.startsWith(prefix + "about")) {
-    message.channel.send({
-      embed: new Discord.RichEmbed()
-        .setAuthor(bot.user.username, bot.user.avatarURL)   .setThumbnail(message.author.avatarURL)
-        .setColor("RANDOM")
+client.on("message", message => {
+  if (message.content === prefix + "about") {
+    if (cooldown.has(message.author.id)) {
+      return message.channel
+        .send(`<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`)
+        .then(m => {
+          m.delete({ timeout: cdtime * 600 });
+        });
+    }
+    cooldown.add(message.author.id);
+    setTimeout(() => {
+      cooldown.delete(message.author.id);
+    }, cdtime * 1000);
+    const embed = new Discord.MessageEmbed()
         .setTitle("**Info The Bot** ")
         .addField(
           "**My Ping**",
           [`${Date.now() - message.createdTimestamp}` + "MS"],
           true
         )
-        .addField("**Owner Bot**", `<@637299944939585576>`, true)
+        .addField("**Owner Bot**", `<@758476332098650152>`, true)
         .addField("**Servers**", [bot.guilds.size], true)
         .addField("**Channels**", `[${bot.channels.size}]`, true)
         .addField("**Users**", `[${bot.users.size}]`, true)
         .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
         .addField("**My ID**", `[ ${bot.user.id} ]`, true)
-        .addField(
-          "**My Prefix**",
-          `[-]`,
-          true
-        )
- 
+          
        .setFooter(message.author.username,message.author.avatarURL)
  .setTimestamp()
     });
