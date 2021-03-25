@@ -89,8 +89,8 @@ client.on("message", async message => {
       
 ** ❄| info **
 ${prefix}botinfo
-${prefix}userrinfo
-${prefix}servarinfo
+${prefix}userinfo
+${prefix}serverinfo
 ${prefix}invite
 ${prefix}support
 
@@ -1279,7 +1279,7 @@ client.on("message", message => {
 });
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
-  if (message.content === prefix + "bot") {
+  if (message.content === prefix + "botinfo") {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
