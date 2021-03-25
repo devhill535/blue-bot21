@@ -1268,31 +1268,6 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.content === "b/about") {
-    const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-  .setThumbnail(message.author.avatarURL)  .setImage(`https://cdn.discordapp.com/attachments/703243461079597138/755709757398057062/image0-14.gif`)
- .setFooter(message.author.username,message.author.avatarURL)
- .setTimestamp()
- .setDescription(`
-    \`𝖮𝗐𝗇𝖾𝗋 Id\`
-━━━━━━━━━━━━━━━━━━━━
-**758476332098650152**
-━━━━━━━━━━━━━━━━━━━━ 
-    \`𝖮𝗐𝗇𝖾𝗋 Bot\`
-━━━━━━━━━━━━━━━━━━━━    
-<@758476332098650152>
-━━━━━━━━━━━━━━━━━━━━
-   \`Creation Time\`
-━━━━━━━━━━━━━━━━━━━━
-                 **9/2/2020**
-
- `);
-
-    message.channel.sendEmbed(embed);
-  }
-});
 
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
