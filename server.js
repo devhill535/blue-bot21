@@ -907,13 +907,13 @@ client.on("guildMemberRemove", async member => {
 client.on("message", message => {
   if (message.content === prefix + "settings") {
     return message.channel.send(
-      "**you dont have a Permission**,<a:emoji_26:809385634149826611>"
+      "**you dont have a Permission**"
     );
-    if (!message.member.hasPermission("ADMINISTRATOR")) return;
+    if (message.member.hasPermission("ADMINISTRATOR")) return;
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second`
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -931,31 +931,31 @@ client.on("message", message => {
       .setColor("#808080")
       .setThumbnail(client.user.avatarURL()).setDescription(`
 AntiBan
-Enabled:<a:emoji_26:809385634149826611>
+Enabled:
 Maximum Ban : ${config[message.guild.id].banLimit}
-<a:emoji_9:797912443628027955>
+
 AntiKick
-Enabled:<a:emoji_26:809385634149826611>
+Enabled:
 Maximum Kick : ${config[message.guild.id].kickLimits}
-<a:emoji_9:797912443628027955>
+
 AntiChannelD
-Enabled:<a:emoji_26:809385634149826611> 
+Enabled:
 Maximum Delete : ${config[message.guild.id].chaDelLimit}
-<a:emoji_9:797912443628027955>
+
 AntiChannelC
-Enabled:<a:emoji_26:809385634149826611>
+Enabled:
 Maximum Create : ${config[message.guild.id].chaCrLimit}
-<a:emoji_9:797912443628027955>
+
 AntiRoleD
-Enabled:<a:emoji_26:809385634149826611>
+Enabled:
 Maximum Delete : ${config[message.guild.id].roleDelLimit}
-<a:emoji_9:797912443628027955>
+
 AntiRoleC
-Enabled:<a:emoji_26:809385634149826611> 
+Enabled:
 Maximum Create : ${config[message.guild.id].roleCrLimits}
-<a:emoji_9:797912443628027955>
+
 AntiTime
-Enabled:<a:emoji_26:809385634149826611> 
+Enabled: 
 Maximum Time : ${config[message.guild.id].time}
 `);
     message.channel.send(black);
