@@ -1268,6 +1268,12 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
+client.on("message", message => {
+  if (message.author.bot) return;
+  if (message.content.startsWith(prefix + "about")) {
+    if (cooldown.has(message.author.id)) {
+      return message.channel
+        .send(
 const Discord = require("discord.js");
 const moment = require("moment");
 const os = require('os');
