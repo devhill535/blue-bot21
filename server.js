@@ -1268,62 +1268,32 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.author.bot) return;
-  if (message.content.startsWith(prefix + "about")) {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(
-const Discord = require("discord.js");
-const moment = require("moment");
-const os = require('os');
+bot.on("message", message => {
+  if (message.content === "-about") {
+    const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+  .setThumbnail(message.author.avatarURL)  .setImage(`https://cdn.discordapp.com/attachments/703243461079597138/755709757398057062/image0-14.gif`)
+ .setFooter(message.author.username,message.author.avatarURL)
+ .setTimestamp()
+ .setDescription(`
+    \`𝖮𝗐𝗇𝖾𝗋 Id\`
+━━━━━━━━━━━━━━━━━━━━
+**758476332098650152**
+━━━━━━━━━━━━━━━━━━━━ 
+    \`𝖮𝗐𝗇𝖾𝗋 Bot\`
+━━━━━━━━━━━━━━━━━━━━    
+<@758476332098650152>
+━━━━━━━━━━━━━━━━━━━━
+   \`Creation Time\`
+━━━━━━━━━━━━━━━━━━━━
+                 **9/2/2021**
 
-process.setMaxListeners(0);
+ `);
 
-require("moment-duration-format");
+    message.channel.sendEmbed(embed);
+  }
+});
 
-exports.run = async (bot, message, args) => {
-  
-  const seksizaman = moment.duration(bot.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
-  
-  const istatistikler = new Discord.MessageEmbed()
-  
-  .setColor('RANDOM')
-  
-
-  
-.addField("**OWNER BOT**", "<@758476332098650152>")
-  
-  .addField("`Language Program`",  `**Java Script**`, true)
-  
-   .addField("`my name`", `**blue bot**`, true)
-  
-  .addField("`My ID`",  `**758476332098650152**`, true)
-  
-  .addField( "`My Prefix` ",`**b/**`,true)
-  
-  .addField("**About Memory**", (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)  
-  
-  .addField("**Discord.JS**", "v"+Discord.version, true)
-  
-  .addField("**Node.JS**", `${process.version}`, true)
-  
-  
-  return message.channel.send(istatistikler);
-  };
-
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: [],
-  permLevel: 0
-};
-
-exports.help = {
-  name: "about",
-  description: "lrowsxrd",
-  usage: "jfkdjkj"
-};
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content.startsWith(prefix + "warn")) {
