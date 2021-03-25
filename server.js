@@ -1269,10 +1269,10 @@ client.on("message", message => {
 });
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
-  if (message.content === prefix + "about") {
+  if (message.content === prefix + "bot") {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(`<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`)
+     .send(`<@${message.author.id}>,  Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -1282,25 +1282,24 @@ client.on("message", message => {
       cooldown.delete(message.author.id);
     }, cdtime * 1000);
     const embed = new Discord.MessageEmbed()
-        .setTitle("**Info The Bot** ")
-        .addField(
-          "**My Ping**",
-          [`${Date.now() - message.createdTimestamp}` + "MS"],
-          true
-        )
-        .addField("**Owner Bot**", `<@758476332098650152>`, true)
-        .addField("**Servers**", [bot.guilds.size], true)
-        .addField("**Channels**", `[${bot.channels.size}]`, true)
-        .addField("**Users**", `[${bot.users.size}]`, true)
-        .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
-        .addField("**My ID**", `[ ${bot.user.id} ]`, true)
-          
-       .setFooter(message.author.username,message.author.avatarURL)
- .setTimestamp()
-    });
+      .setColor("#808080")
+
+      .addField("**Name** : ", `» ${client.user.tag} `, true)
+
+      .addField("**ID Bot** : ", ` ${client.user.id} `, true)
+    
+     .addField("**Channels**", `[${bot.channels.size}]`, true)
+
+      .addField("**Guilds** : ", `» ${client.guilds.cache.size}  guilds`, true)
+
+     .addField("**Owner Bot**", `<@758476332098650152>`, true)
+    
+      .setThumbnail(message.author.avatarURL())
+      
+    message.channel.send(embed);
+    
   }
 });
-
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content.startsWith(prefix + "warn")) {
