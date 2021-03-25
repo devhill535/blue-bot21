@@ -1294,18 +1294,14 @@ client.on("message", message => {
       cooldown.delete(message.author.id);
     }, cdtime * 1000);
     const embed = new Discord.MessageEmbed()
-      .setColor("#808080")
-
-      .addField("**Name** : ", `» ${client.user.tag} `, true)
-
-      .addField("**ID Bot** : ", ` ${client.user.id} `, true)
-
-      .addField("**Guilds** : ", `» ${client.guilds.cache.size}  guilds`, true)
-
-      .addField("**Developers Bot** : ", `Calli#4415`, true)
-
-      .setThumbnail(message.author.avatarURL());
-
+      .setColor("RANDOM")
+    .addField("**Owner Bot**", `<@758476332098650152>`, true)
+        .addField("**Servers**", [bot.guilds.size], true)
+        .addField("**Channels**", `[${bot.channels.size}]`, true)
+        .addField("**Users**", `[${bot.users.size}]`, true)
+        .addField("**My Name**", `[ ${bot.user.tag} ]`, true)
+        .addField("**My ID**", `[ ${bot.user.id} ]`, true)
+       
     message.channel.send(embed);
   }
 });
