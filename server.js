@@ -189,6 +189,19 @@ client.on("message", msg => {
 });
 
 client.on("message", msg => {
+  if (msg.content === "reklam") {
+    msg.reply("**bo rol ba dasteki bnera dl   **");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "slaw reklam haya ") {
+    msg.reply("**bale bo rol ba dasteki bnera gyan  **");
+  }
+});
+
+
+client.on("message", msg => {
   if (msg.content === "mama") {
     msg.reply("**bale braza **");
   }
