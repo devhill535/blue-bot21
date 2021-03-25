@@ -93,6 +93,7 @@ ${prefix}userinfo
 ${prefix}serverinfo
 ${prefix}invite
 ${prefix}support
+${prefix} setting
 
 ** |Security**
 ${prefix}anti ban {number}
@@ -103,7 +104,6 @@ ${prefix}anti roleD    {number}
 ${prefix}anti roleC    {number}
 ${prefix}anti  bot    {on/off}
 ${prefix}anti problem [on/off]
-${prefix} setting
 
 ** ⚔|Modirator**
 ${prefix}ban
