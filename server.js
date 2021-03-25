@@ -1118,7 +1118,7 @@ client.on("message", async message => {
 });
 ///////////////////////////////////////////////////////////////////////////////
 bot.on("message", message => {
-  if (message.content.startsWith(prefix + "bot")) {
+  if (message.content.startsWith(prefix + "about")) {
     message.channel.send({
       embed: new Discord.RichEmbed()
         .setAuthor(bot.user.username, bot.user.avatarURL)   .setThumbnail(message.author.avatarURL)
@@ -1147,31 +1147,7 @@ bot.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-bot.on("message", message => {
-  if (message.content === "-about") {
-    const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-  .setThumbnail(message.author.avatarURL)  .setImage(`https://cdn.discordapp.com/attachments/703243461079597138/755709757398057062/image0-14.gif`)
- .setFooter(message.author.username,message.author.avatarURL)
- .setTimestamp()
- .setDescription(`
-    \`𝖮𝗐𝗇𝖾𝗋 Id\`
-━━━━━━━━━━━━━━━━━━━━
-**758476332098650152**
-━━━━━━━━━━━━━━━━━━━━ 
-    \`𝖮𝗐𝗇𝖾𝗋 Bot\`
-━━━━━━━━━━━━━━━━━━━━    
-<@758476332098650152>
-━━━━━━━━━━━━━━━━━━━━
-   \`Creation Time\`
-━━━━━━━━━━━━━━━━━━━━
-                 **9/2/2021**
 
- `);
-
-    message.channel.sendEmbed(embed);
-  }
-});
 //////////////////////////////////////////////////////////////////////////
 client.on("message", prof => {
   if (prof.content.startsWith(prefix + "userinfo")) {
