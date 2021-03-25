@@ -45,19 +45,10 @@ client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.PFGU1k0CVP3i2-4W3THHBpSWEa0");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
-  console.log(
-    `Online In Servers : ${client.guilds.size} | Users : ${client.users.size}`
-  );
-  let statuses = ["HELL is Here #7574", "b/help", "MODIRATOR"];
-
-  setInterval(function() {
-    let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
-    client.user.setActivity(STREAMING, {
-      type: "STREAMING",
-      url: "https://www.twitch.tv/faith"
-    });
-  }, 2000);
-});
+    console.log(`${client.user.username} ready!`)
+  client.user.setActivity(`  b/help  ${client.guilds.cache.size} Server,Users ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)},`, { type: "PLAYING"});
+   
+})
 
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
@@ -68,7 +59,7 @@ client.on("message", async message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -336,11 +327,11 @@ client.on("message", message => {
         `**<@${message.author.id}>,  Successfully changed the anti roleC to ${config[message.guild.id].roleDelLimit}** ${rast}`
       );
     }
-    if (message.content.startsWith(prefix + "anti roleD")) {
+     if (message.content.startsWith(prefix + "anti roleD")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>,  Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
@@ -361,11 +352,11 @@ client.on("message", message => {
         `**<@${message.author.id}>,  Successfully changed the anti roleD to ${config[message.guild.id].roleCrLimits}** ${rast}`
       );
     }
-    if (message.content.startsWith(prefix + "anti channelC")) {
+     if (message.content.startsWith(prefix + "anti channelC")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>,  Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
@@ -390,7 +381,7 @@ client.on("message", message => {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>, Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
@@ -415,7 +406,7 @@ client.on("message", message => {
       if (cooldown.has(message.author.id)) {
         return message.channel
           .send(
-            `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+            `<@${message.author.id}>,  Please wait for 10 second `
           )
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
