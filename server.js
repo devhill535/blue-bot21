@@ -145,91 +145,37 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", async message => {
-  if (message.content.startsWith(prefix + "lock")) {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
-        )
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    if (!message.channel.guild)
-      return message.channel.send(
-        ghallat + "** | Sorry This Command Only For Servers .**"
-      );
-
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-    if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS"))
-      return;
-    message.channel.updateOverwrite(message.guild.id, {
+bot.on("message", async SAEWAN => {
+  if (SAEWAN.content.startsWith("-lock")) {
+    if (!SAEWAN.member.hasPermission("MANAGE_CHANNELS"))
+      return SAEWAN.channel.send("");
+    if (!SAEWAN.guild.member(bot.user).hasPermission("MANAGE_CHANNELS")) return;
+    SAEWAN.channel.overwritePermissions(SAEWAN.guild.id, {
       SEND_MESSAGES: false
     });
-    const lock = new Discord.MessageEmbed()
-      .setTitle(`CHANNEL LOCK`)
+    let embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setDescription(
-        `
-Locked Channel
-
-<#${message.channel.id}>
-
-locked by
-
-<@${message.author.id}>
-`
-      );
-
-    message.channel.send(lock);
+      .setTitle(` 🔒 | Locked Channel
+Channel Status : Send Message : ❌ `)     
+      .setTimestamp()
+    SAEWAN.channel.sendEmbed(embed);
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", async message => {
-  if (message.content.startsWith(prefix + "unlock")) {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(`<@${message.author.id}>, Please wait for 10 second `)
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    if (!message.channel.guild)
-      return message.channel.send(
-        ghallat + "** | Sorry This Command Only For Servers .**"
-      );
-
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-    if (!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS"))
-      return;
-    message.channel.updateOverwrite(message.guild.id, {
+bot.on("message", async SAEWAN => {
+  if (SAEWAN.content.startsWith("-unlock")) {
+    if (!SAEWAN.member.hasPermission("MANAGE_CHANNELS"))
+      return SAEWAN.channel.send("");
+    if (!SAEWAN.guild.member(bot.user).hasPermission("MANAGE_CHANNELS")) return;
+    SAEWAN.channel.overwritePermissions(SAEWAN.guild.id, {
       SEND_MESSAGES: null
     });
-    const unlock = new Discord.MessageEmbed()
-
-      .setTitle(`CHANNEL UNLOCK`)
+    let embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setDescription(
-        `
-unloked Channel
-
-<#${message.channel.id}>
-
-unloked by
-
-<@${message.author.id}>
-`
-      );
-    message.channel.send(unlock);
+     .setTitle(`🔓 | unlocked Channel
+Channel Status : Send Message : ✅`)
+    .setTimestamp()
+    SAEWAN.channel.sendEmbed(embed);
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
@@ -1295,7 +1241,7 @@ client.on("message", message => {
     }, cdtime * 1000);
     const embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
-    .addField("**Owner Bot**", `<@758476332098650152>`, true)
+        .addField("**Owner Bot**", `<@758476332098650152>`, true)
         .addField("**Servers**", [bot.guilds.size], true)
         .addField("**Channels**", `[${bot.channels.size}]`, true)
         .addField("**Users**", `[${bot.users.size}]`, true)
