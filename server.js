@@ -1268,38 +1268,56 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.content === prefix + "bot") {
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-     .send(`<@${message.author.id}>,  Please wait for 10 second `)
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    const embed = new Discord.MessageEmbed()
-      .setColor("#808080")
+const Discord = require("discord.js");
+const moment = require("moment");
+const os = require('os');
 
-      .addField("**Name** : ", `» ${client.user.tag} `, true)
+process.setMaxListeners(0);
 
-      .addField("**ID Bot** : ", ` ${client.user.id} `, true)
-    
-     .addField("**Channels**", `[${bot.channels.size}]`, true)
+require("moment-duration-format");
 
-      .addField("**Guilds** : ", `» ${client.guilds.cache.size}  guilds`, true)
+exports.run = async (bot, message, args) => {
+  
+  const seksizaman = moment.duration(bot.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
+  
+  const istatistikler = new Discord.MessageEmbed()
+  
+  .setColor('RANDOM')
+  
 
-     .addField("**Owner Bot**", `<@758476332098650152>`, true)
-    
-      .setThumbnail(message.author.avatarURL())
-      
-    message.channel.send(embed);
-    
-  }
-});
+  
+.addField("**OWNER BOT**", "<@758476332098650152>")
+  
+  .addField("`Language Program`",  `**Java Script**`, true)
+  
+   .addField("`my name`", `**blue bot**`, true)
+  
+  .addField("`My ID`",  `**758476332098650152**`, true)
+  
+  .addField( "`My Prefix` ",`**b/**`,true)
+  
+  .addField("**About Memory**", (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)  
+  
+  .addField("**Discord.JS**", "v"+Discord.version, true)
+  
+  .addField("**Node.JS**", `${process.version}`, true)
+  
+  
+  return message.channel.send(istatistikler);
+  };
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: "about",
+  description: "lrowsxrd",
+  usage: "jfkdjkj"
+};
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content.startsWith(prefix + "warn")) {
