@@ -1268,7 +1268,7 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-bot.on("message", message => {
+client.on("message", message => {
   if (message.content === "b/about") {
     const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
@@ -1286,7 +1286,7 @@ bot.on("message", message => {
 ━━━━━━━━━━━━━━━━━━━━
    \`Creation Time\`
 ━━━━━━━━━━━━━━━━━━━━
-                 **9/2/2021**
+                 **9/2/2020**
 
  `);
 
