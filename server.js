@@ -1269,7 +1269,7 @@ client.on("message", message => {
 });
 ///////////////////////////////////////////////////////////////////////////////
 bot.on("message", message => {
-  if (message.content === "-about") {
+  if (message.content === "b/about") {
     const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
   .setThumbnail(message.author.avatarURL)  .setImage(`https://cdn.discordapp.com/attachments/703243461079597138/755709757398057062/image0-14.gif`)
