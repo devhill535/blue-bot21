@@ -79,7 +79,6 @@ client.on("message", async message => {
       ).setDescription(`
       
 ** ❄| info **
-${prefix}botinfo
 ${prefix}userinfo
 ${prefix}serverinfo
 ${prefix}invite
