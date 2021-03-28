@@ -140,39 +140,8 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", async message => {
-  if (message.content.toLowerCase() === prefix + "/p") {
-    message.channel.startTyping();
-    setTimeout(() => {
-      message.channel.stopTyping();
-    }, Math.random() * (1 - 3) + 1 * 200).then(
-      message.channel.send({
-        files: [
-          {
-            name: "prfoilebycutie.png",
-            attachment: `https://api.probot.io/profile/${message.author.id}`
-          }
-        ]
-      })
-    );
-  }
-});
 
-client.on("message", message => {
-  var command = message.content;
-  if (message.author.bot) return;
 
-  switch (command) {
-    case "avatjhyuyujujjhhhjuijjiar":
-      message.channel.send(
-        `وێنەی ئەکاونتەکەت ئەوەیە <:emoji_299:765347080515354654>: ${message.author.avatarURL}`
-      );
-      break;
-
-    case "<@790600594838257696>":
-      message.channel.send("فــەرمـــوو    ");
-  }
-});
 
 client.on("message", msg => {
   if (msg.content === "slaw") {
@@ -210,11 +179,7 @@ client.on("message", msg => {
   }
 });
 
-client.on("message", msg => {
-  if (msg.content === "Slaw") {
-    msg.reply("**xoy chwabt adatawa **");
-  }
-});
+
 
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
