@@ -41,7 +41,7 @@ const prefix = "b/";
 const cooldown = new Set();
 const cdtime = 7;
 /////////////////////////////////////
-client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.fQO5weSCUBFzksKTbXEzN_HccCM");
+client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.sFQ_KBsMYStlI7FP-ZPlyIPP-Hg");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
@@ -56,6 +56,7 @@ client.on("ready", () => {
     { type: "PLAYING" }
   );
 });
+
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
@@ -64,9 +65,7 @@ client.on("message", async message => {
   if (message.content.startsWith(prefix + "help")) {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(
-          `<@${message.author.id}>,  Please wait for 10 second `
-        )
+        .send(`<@${message.author.id}>,  Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -141,7 +140,34 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
+client.on("message", async message => {
+  if (message.content.toLowerCase() === prefix + "/p") {
+    message.channel.startTyping();
+    setTimeout(() => {
+      message.channel.stopTyping();
+    }, Math.random() * (1 - 3) + 1 * 200).then(
+      message.channel.send({
+        files: [
+          {
+            name: "prfoilebycutie.png",
+            attachment: `https://api.probot.io/profile/${message.author.id}`
+          }
+        ]
+      })
+    );
+  }
+});
 
+client.on("message", message => {
+  var command = message.content;
+  if (message.author.bot) return;
+
+  switch (command) {
+    case "avatjhyuyujujjhhhjuijjiar":
+      message.channel.send(
+        `وێنەی ئەکاونتەکەت ئەوەیە <:emoji_299:765347080515354654>: ${message.author.avatarURL}`
+      );
+      break;
 
     case "<@790600594838257696>":
       message.channel.send("فــەرمـــوو    ");
@@ -177,7 +203,6 @@ client.on("message", msg => {
     msg.reply("**bale bo rol ba dasteki bnera gyan  **");
   }
 });
-
 
 client.on("message", msg => {
   if (msg.content === "mama") {
@@ -226,9 +251,8 @@ Locked Channel
 locked by
 <@${message.author.id}>
 `
-      )
-      
-      
+      );
+
     message.channel.send(lock);
   }
 });
@@ -258,7 +282,7 @@ client.on("message", async message => {
       SEND_MESSAGES: null
     });
     const unlock = new Discord.MessageEmbed()
-      
+
       .setTitle(`CHANNEL UNLOCK`)
       .setColor("#808080")
       .setDescription(
@@ -268,7 +292,7 @@ unloked Channel
 unloked by
 <@${message.author.id}>
 `
-      )
+      );
     message.channel.send(unlock);
   }
 });
@@ -305,15 +329,11 @@ client.on("message", message => {
     };
   if (message.content.startsWith(prefix + "anti")) {
     if (message.author.id !== message.guild.ownerID)
-      return message.channel.send(
-        "**Just Can Online Ownership**,"
-      );
+      return message.channel.send("**Just Can Online Ownership**,");
     if (message.content.startsWith(prefix + "anti ban")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>,  Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>,  Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -336,9 +356,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti kick")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>, Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>, Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -361,9 +379,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti roleC")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>,  Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>,  Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -383,12 +399,10 @@ client.on("message", message => {
         `**<@${message.author.id}>,  Successfully changed the anti roleC to ${config[message.guild.id].roleDelLimit}** ${rast}`
       );
     }
-     if (message.content.startsWith(prefix + "anti roleD")) {
+    if (message.content.startsWith(prefix + "anti roleD")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>,  Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>,  Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -408,12 +422,10 @@ client.on("message", message => {
         `**<@${message.author.id}>,  Successfully changed the anti roleD to ${config[message.guild.id].roleCrLimits}** ${rast}`
       );
     }
-     if (message.content.startsWith(prefix + "anti channelC")) {
+    if (message.content.startsWith(prefix + "anti channelC")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>,  Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>,  Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -436,9 +448,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti channelD")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>, Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>, Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -461,9 +471,7 @@ client.on("message", message => {
     if (message.content.startsWith(prefix + "anti time")) {
       if (cooldown.has(message.author.id)) {
         return message.channel
-          .send(
-            `<@${message.author.id}>,  Please wait for 10 second `
-          )
+          .send(`<@${message.author.id}>,  Please wait for 10 second `)
           .then(m => {
             m.delete({ timeout: cdtime * 600 });
           });
@@ -946,15 +954,11 @@ client.on("guildMemberRemove", async member => {
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content === prefix + "settings") {
-    return message.channel.send(
-      "**you dont have a Permission**"
-    );
+    return message.channel.send("**you dont have a Permission**");
     if (message.member.hasPermission("ADMINISTRATOR")) return;
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(
-          `<@${message.author.id}>,  Please wait for 10 second`
-        )
+        .send(`<@${message.author.id}>,  Please wait for 10 second`)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -1199,15 +1203,11 @@ client.on("message", message => {
       .addField("server channels", `${message.guild.channels.cache.size}`)
       .addField("server region", `${message.guild.region}`)
       .addField("created in", `${message.guild.createdAt.toLocaleString()}`)
-      .addField(
-        "Boost",
-        `${message.guild.premiumSubscriptionCount}`
-      )
+      .addField("Boost", `${message.guild.premiumSubscriptionCount}`)
       .setThumbnail(message.author.avatarURL())
       .setColor("#808080")
       .setFooter(`Requsted by ${message.author.username}`);
     message.channel.send(EMBED);
-    
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
@@ -1217,9 +1217,7 @@ client.on("message", prof => {
   if (prof.content.startsWith(prefix + "userinfo")) {
     if (cooldown.has(prof.author.id)) {
       return prof.channel
-        .send(
-          `<@${prof.author.id}>,  Please wait for 10 second `
-        )
+        .send(`<@${prof.author.id}>,  Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -1250,9 +1248,7 @@ client.on("message", message => {
   if (args[0] === prefix + "kick") {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(
-          `<@${message.author.id}>,  Please wait for 10 second `
-        )
+        .send(`<@${message.author.id}>,  Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
@@ -1280,9 +1276,7 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "bans")) {
     if (cooldown.has(message.author.id)) {
       return message.channel
-        .send(
-          `<@${message.author.id}>,  Please wait for 10 second `
-        )
+        .send(`<@${message.author.id}>,  Please wait for 10 second `)
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
         });
