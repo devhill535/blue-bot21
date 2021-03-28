@@ -45,7 +45,6 @@ client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.yTqQIZg2vDrm2kCcMtAxeow--KU");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
- 
   client.user.setActivity(
     `  b/help  ${
       client.guilds.cache.size
