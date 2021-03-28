@@ -41,7 +41,7 @@ const prefix = "b/";
 const cooldown = new Set();
 const cdtime = 7;
 /////////////////////////////////////
-client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.ryHqWVNLX5oNQv-FC6zN5vjYmF4");
+client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.sFQ_KBsMYStlI7FP-ZPlyIPP-Hg");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
@@ -84,7 +84,6 @@ client.on("message", async message => {
       ).setDescription(`
       
 ** ❄| info **
-
 ${prefix}userinfo
 ${prefix}serverinfo
 ${prefix}invite
@@ -92,7 +91,6 @@ ${prefix}support
 ${prefix}settings
 
 ** |Security**
-
 ${prefix}anti ban {number}
 ${prefix}anti kick     {number}
 ${prefix}anti channelD {number}
@@ -103,7 +101,6 @@ ${prefix}anti  bot    {on/off}
 ${prefix}anti problem [on/off]
 
 ** ⚔|Modirator**
-
 ${prefix}ban
 ${prefix}kick
 ${prefix}lock
@@ -122,6 +119,17 @@ __ [𝗜𝗡𝗩𝗜𝗧𝗘 𝘽𝙊𝙏](https://discord.com/api/oauth2/author
 
 ///////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+client.on("message", async message => {
+  if (message.content.startsWith(prefix + "invite")) {
+    let invite = new Discord.MessageEmbed();
+
+    message.channel.send("**Check Your DM**");
+    message.author.send(
+      "`invite link`https://discord.com/api/oauth2/authorize?client_id=733469607175913593&permissions=8&scope=bot"
+    );
+  }
+});
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "support")) {
@@ -1203,50 +1211,7 @@ client.on("message", message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "settings")) {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return;
-    if (!message.channel.guild) return;
-    if (message.content < 1023) return;
-    message.channel.send({
-      embed: new Discord.MessageEmbed()
-        .setTitle("Your Settings")
-        .setThumbnail(message.guild.iconURL)
-        .setColor("RANDOM")
-        .addField(
-          "AntiBan",
-          `Enabled: :green_circle:
-Maximum Ban:${config[message.guild.id].banLimit} `
-        )
-        .addField(
-          "Anti Kick",
-          `Enabled: :green_circle:
-Maximum Kick:${config[message.guild.id].kickLimits}`
-        )
-        .addField(
-          "Anti Channel",
-          `Enabled: :green_circle:
-Maximum ChannelD:${config[message.guild.id].chaDelLimit}
-Maximum ChannelC:${config[message.guild.id].chaCrLimit}`
-        )
-        .addField(
-          "Anti Role",
-          `Enabled: :green_circle:
-Maximum RoleD:${config[message.guild.id].roleDelLimit}
-Maximum RoleC:${config[message.guild.id].roleCrLimits}`
-        )
-        .addField(
-          "Anti Time",
-          `Enabled: :green_circle:
-Maximum Time: ${config[message.guild.id].time}`
-        )
 
-        .setFooter(message.author.username, ``)
-
-        .setTimestamp()
-    });
-  }
-});
 //////////////////////////////////////////////////////////////////////////
 client.on("message", prof => {
   if (prof.content.startsWith(prefix + "userinfo")) {
@@ -1458,62 +1423,6 @@ ${msgs.size} messages cleared
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////
-const { messageEmbed } = require("discord.js");
-const message = require("ms");
-module.exports = {
-  name: "giveaway",
-  description: "Create a simple giveaway",
-  usage: "<time> <channel> <prize>",
-  category: "fun",
-  run: async (bot, message, args) => {
-    if (!args[0]) return message.channel.send(`You did not specify your time!`);
-    if (
-      !args[0].endsWith("d") &&
-      !args[0].endsWith("h") &&
-      !args[0].endsWith("m")
-    )
-      return message.channel.send(
-        `You did not use the correct formatting for the time!`
-      );
-    if (isNaN(args[0][0])) return message.channel.send(`That is not a number!`);
-    let channel = message.mentions.channels.first();
-    if (!channel)
-      return message.channel.send(
-        `I could not find that channel in the guild!`
-      );
-    let prize = args.slice(2).join(" ");
-    if (!prize) return message.channel.send(`No prize specified!`);
-    message.channel.send(`*Giveaway created in ${channel}*`);
-    let Embed = new MessageEmbed()
-      .setTitle(`New giveaway!`)
-      .setDescription(
-        `The user ${message.author} is hosting a giveaway for the prize of **${prize}**`
-      )
-      .setTimestamp(Date.now() + ms(args[0]))
-      .setColor(`BLUE`);
-    let m = await channel.send(Embed);
-    m.react("🎉");
-    setTimeout(() => {
-      if (m.reactions.cache.get("🎉").count <= 1) {
-        message.channel.send(`Reactions: ${m.reactions.cache.get("🎉").count}`);
-        return message.channel.send(
-          `Not enough people reacted for me to start draw a winner!`
-        );
-      }
-
-      let winner = m.reactions.cache
-        .get("🎉")
-        .users.cache.filter(u => !u.bot)
-        .random();
-      channel.send(
-        `The winner of the giveaway for **${prize}** is... ${winner}`
-      );
-    }, ms(args[0]));
-  }
-};
-/////////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
   if (
     message.author.bot ||
