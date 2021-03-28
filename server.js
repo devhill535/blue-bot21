@@ -45,11 +45,21 @@ client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.fQO5weSCUBFzksKTbXEzN_HccCM");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
-    console.log(`${client.user.username} ready!`)
-  client.user.setActivity(`  b/help  ${client.guilds.cache.size} Server,Users ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)},`, { type: "PLAYING"});
-   
-})
+  console.log(
+    `Online In Servers : ${client.guilds.size} | Users : ${client.users.size}`
+  );
+  let statuses = ['HELL is Here #7574','/help','SEQURITY','MODIRATOR']
 
+  ;
+
+  setInterval(function() {
+    let STREAMING = statuses[Math.floor(Math.random() * statuses.length)];
+    client.user.setActivity(STREAMING, {
+      type: "STREAMING",
+      url: "https://www.twitch.tv/faith"
+    });
+  }, 2000);
+});
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
@@ -135,34 +145,7 @@ client.on("message", async message => {
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", async message => {
-  if (message.content.toLowerCase() === prefix + "/p") {
-    message.channel.startTyping();
-    setTimeout(() => {
-      message.channel.stopTyping();
-    }, Math.random() * (1 - 3) + 1 * 200).then(
-      message.channel.send({
-        files: [
-          {
-            name: "prfoilebycutie.png",
-            attachment: `https://api.probot.io/profile/${message.author.id}`
-          }
-        ]
-      })
-    );
-  }
-});
 
-client.on("message", message => {
-  var command = message.content;
-  if (message.author.bot) return;
-
-  switch (command) {
-    case "avatjhyuyujujjhhhjuijjiar":
-      message.channel.send(
-        `وێنەی ئەکاونتەکەت ئەوەیە <:emoji_299:765347080515354654>: ${message.author.avatarURL}`
-      );
-      break;
 
     case "<@790600594838257696>":
       message.channel.send("فــەرمـــوو    ");
