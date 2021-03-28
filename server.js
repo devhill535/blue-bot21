@@ -45,10 +45,17 @@ client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.fQO5weSCUBFzksKTbXEzN_HccCM");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
-    console.log(${client.user.username} ready!)
-  client.user.setActivity(  b/help  ${client.guilds.cache.size} Server,Users ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)},, { type: "PLAYING"});
-
-})
+  console.log(`${client.user.username} ready!`);
+  client.user.setActivity(
+    `  b/help  ${
+      client.guilds.cache.size
+    } Server,Users ${client.guilds.cache.reduce(
+      (a, g) => a + g.memberCount,
+      0
+    )},`,
+    { type: "PLAYING" }
+  );
+});
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
