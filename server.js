@@ -43,19 +43,14 @@ const cdtime = 7;
 /////////////////////////////////////
 client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.yTqQIZg2vDrm2kCcMtAxeow--KU");
 ///////////////////////////////////////////////////////////////////////////////
-
 client.on("ready", () => {
   client.user.setActivity(
-    `  b/help  ${
-      client.guilds.cache.size
-    } Server,Users ${client.guilds.cache.reduce(
-      (a, g) => a + g.memberCount,
-      0
-    )},`,
+    `  b/help 
+${client.guilds.cache.size} Server,
+
     { type: "PLAYING" }
   );
 });
-
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
