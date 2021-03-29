@@ -259,12 +259,12 @@ unloked by
   }
 });
 ///////////////////////////////////////////////////////////////////////////////
-const rast = "<a:emoji_26:809385634149826611>";
-const rastw = "<a:emoji_26:809385634149826611>";
-const ghallat = "<a:emoji_27:811585526913957894>";
-const ghallatw = "<a:emoji_27:811585526913957894>";
-const logosec = "<a:emoji_11:797914740033716224>";
-const warn = "<a:emoji_11:797914740033716224>";
+const rast = "";
+const rastw = "";
+const ghallat = "";
+const ghallatw = "";
+const logosec = "";
+const warn = "";
 const color = "RANDOM";
 let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
 let config = JSON.parse(fs.readFileSync("./configg.json", "UTF8"));
@@ -995,7 +995,7 @@ client.on("message", async message => {
       return message.reply("I need ``BAN_MEMBERS`` permission ");
     message.guild.members.unban(toBan);
     message.channel.send(
-      `<a:emoji_26:809385634149826611> has been unbanned from the server`
+      `has been unbanned from the server`
     );
   }
 });
@@ -1006,7 +1006,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1028,7 +1028,7 @@ client.on("message", message => {
         });
       });
       return message.channel.send(
-        "<a:emoji_26:809385634149826611> Unban all members"
+        "Unban all members"
       );
     }
     if (!args)
@@ -1037,12 +1037,12 @@ client.on("message", message => {
       .unban(args)
       .then(m => {
         message.channel.send(
-          `<a:emoji_26:809385634149826611> Unban this member ${m.username}`
+          ` Unban this member ${m.username}`
         );
       })
       .catch(stry => {
         message.channel.send(
-          `**<a:emoji_27:811585526913957894> I can't find that person \`${args}\` in ban list**`
+          `** I can't find that person \`${args}\` in ban list**`
         );
       });
   }
@@ -1056,7 +1056,7 @@ client.on("message", async message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1105,7 +1105,7 @@ client.on("message", async message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1145,7 +1145,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1262,7 +1262,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, Please wait for 10 second`
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1287,7 +1287,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1342,7 +1342,7 @@ client.on("message", async message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>, Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1405,7 +1405,7 @@ client.on("message", async message => {
       )
     )
       return message.channel.send(
-        "<a:emoji_27:811585526913957894> | You don't have Permissions do to this."
+        " | You don't have Permissions do to this."
       );
     let user = message.guild.member(
       message.mentions.users.first() ||
@@ -1413,28 +1413,28 @@ client.on("message", async message => {
     );
     if (!user)
       return message.channel.send(
-        "<a:emoji_27:811585526913957894> | Member not found!"
+        " | Member not found!"
       );
     let bot = message.guild.member(client.user);
     if (user.user.id == client.user.id) return message.channel.send("lol no");
     if (user.user.id == message.guild.owner.id)
       return message.channel.send(
-        `<a:emoji_27:811585526913957894> | You can't ${mode} the owner!`
+        ` | You can't ${mode} the owner!`
       );
     if (
       user.roles.highest.position >= message.member.roles.highest.position &&
       message.author.id !== message.guild.ownerID
     )
       return message.channel.send(
-        `<a:emoji_27:811585526913957894> | You can't ${mode} people higher ranked than yourself!`
+        ` | You can't ${mode} people higher ranked than yourself!`
       );
     if (user.roles.highest.position >= bot.roles.highest.position)
       return message.channel.send(
-        `<a:emoji_27:811585526913957894> | I can't ${mode} people who are higher ranked than me!`
+        ` | I can't ${mode} people who are higher ranked than me!`
       );
     if (!user[`${mode == "ban" ? "bann" : mode}able`])
       return message.channel.send(
-        `<a:emoji_27:811585526913957894> | Specified user is not ${mode}able.`
+        ` | Specified user is not ${mode}able.`
       );
     user[mode](
       mode == "ban"
@@ -1443,7 +1443,7 @@ client.on("message", async message => {
     )
       .then(() =>
         message.channel.send(
-          `<a:emoji_26:809385634149826611> ${
+          ` ${
             mode == "ban" ? "Bann" : mode
           }ed __${user.user.tag}__`
         )
@@ -1458,7 +1458,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
@@ -1493,7 +1493,7 @@ client.on("message", message => {
     if (cooldown.has(message.author.id)) {
       return message.channel
         .send(
-          `<@${message.author.id}>, <a:emoji_13:798075791065350174> Please wait for 10 second <a:emoji_13:798075791065350174>`
+          `<@${message.author.id}>,  Please wait for 10 second `
         )
         .then(m => {
           m.delete({ timeout: cdtime * 600 });
