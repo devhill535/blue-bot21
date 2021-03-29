@@ -933,7 +933,7 @@ client.on('message', message => {
     if (message.content < 1023) return;
     const black = new Discord.MessageEmbed()
       .setAuthor(client.user.username, client.user.avatarURL())
-      .setColor("#808080")
+      .setColor("RANDOM")
       .setThumbnail(client.user.avatarURL()).setDescription(`
 AntiBan
 Enabled:
