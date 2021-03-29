@@ -914,58 +914,34 @@ client.on("guildMemberRemove", async member => {
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-client.on("message", message => {
-  if (message.content === prefix + "settings") {
-    return message.channel.send("**you dont have a Permission**");
-    if (message.member.hasPermission("ADMINISTRATOR")) return;
-    if (cooldown.has(message.author.id)) {
-      return message.channel
-        .send(`<@${message.author.id}>,  Please wait for 10 second`)
-        .then(m => {
-          m.delete({ timeout: cdtime * 600 });
-        });
-    }
-    cooldown.add(message.author.id);
-    setTimeout(() => {
-      cooldown.delete(message.author.id);
-    }, cdtime * 1000);
-    if (message.author.id !== message.guild.ownerID)
-      if (!message.channel.guild) return;
+client.on('message', message => {
+    if (message.content.startsWith(prefix+"settings")) {
+   if (!message.member.hasPermission("ADMINISTRATOR")) return;
+        if (!message.channel.guild) return;
     if (message.content < 1023) return;
-    const black = new Discord.MessageEmbed()
-      .setAuthor(client.user.username, client.user.avatarURL())
-      .setColor("#808080")
-      .setThumbnail(client.user.avatarURL()).setDescription(`
-AntiBan
-Enabled:
-Maximum Ban : ${config[message.guild.id].banLimit}
-
-AntiKick
-Enabled:
-Maximum Kick : ${config[message.guild.id].kickLimits}
-
-AntiChannelD
-Enabled:
-Maximum Delete : ${config[message.guild.id].chaDelLimit}
-
-AntiChannelC
-Enabled:
-Maximum Create : ${config[message.guild.id].chaCrLimit}
-
-AntiRoleD
-Enabled:
-Maximum Delete : ${config[message.guild.id].roleDelLimit}
-
-AntiRoleC
-Enabled:
-Maximum Create : ${config[message.guild.id].roleCrLimits}
-
-AntiTime
-Enabled: 
-Maximum Time : ${config[message.guild.id].time}
-`);
-    message.channel.send(black);
-  }
+        message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setTitle('Your Settings')
+            .setThumbnail(message.guild.iconURL)
+            .setColor('#000000')
+            .addField('AntiBan' ,`Enabled::green_circle: 
+Maximum Ban:${config[message.guild.id].banLimit} ` )
+            .addField('Anti Kick', `Enabled: :green_circle:
+Maximum Kick:${config[message.guild.id].kickLimits}`)
+            .addField('Anti Channel',`Enabled: :green_circle:
+Maximum ChannelD:${config[message.guild.id].chaDelLimit}
+Maximum ChannelC:${config[message.guild.id].chaCrLimit}`)
+            .addField('Anti Role' , `Enabled: :green_circle:
+Maximum RoleD:${config[message.guild.id].roleDelLimit}
+Maximum RoleC:${config[message.guild.id].roleCrLimits}`)
+             .addField('Anti Time' , `Enabled: :green_circle:
+Maximum Time: ${config[message.guild.id].time}`)
+       
+            .setFooter(message.author.username,  `https://cdn.discordapp.com/emojis/771689685579333673.gif?v=1`
+)  
+        .setTimestamp()
+    })
+}
 });
 ///////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
