@@ -49,8 +49,7 @@ client.on("ready", () => {
     `  b/help  ${
       client.guilds.cache.size
     } Server,
-
-    )},`,
+    `,
     { type: "PLAYING" }
   );
 });
