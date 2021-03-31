@@ -43,14 +43,12 @@ const cdtime = 7;
 /////////////////////////////////////
 client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.yTqQIZg2vDrm2kCcMtAxeow--KU");
 ///////////////////////////////////////////////////////////////////////////////
+
 client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
-  client.user.setActivity(
-    `  b/help  ${
-  
-    { type: "PLAYING" }
-  );
-});
+    console.log(`${client.user.username} ready!`)
+  client.user.setActivity(`  b/help , { type: "PLAYING"});
+   
+})
 
 ///////////////////////////////////////////////////////////////////////////////
 client.on("warn", info => console.log(info));
