@@ -47,9 +47,7 @@ client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(
     `  b/help  ${
-      client.guilds.cache.size
-    } Server,
-    `,
+  
     { type: "PLAYING" }
   );
 });
