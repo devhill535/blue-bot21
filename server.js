@@ -119,10 +119,8 @@ client.on("message", async message => {
 
 module.exports = {
   name: "inv",
-  description: "Set Audio - Effects",
   aliases: ["inv"],
-  cooldown: 3,
-  edesc: `Type this Command to change the current audio effect - style \nUsage: ${PREFIX}filter <Filtertype>`,
+  
 
     message.channel.send("**Check Your DM**");
     message.author.send(
