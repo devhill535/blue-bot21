@@ -116,10 +116,6 @@ __ [𝗜𝗡𝗩𝗜𝗧𝗘 𝘽𝙊𝙏](https://discord.com/api/oauth2/author
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "invite")) {
     let invite = new Discord.MessageEmbed();
-
-module.exports = {
-  name: "inv",
-  aliases: ["inv"],
   
 
     message.channel.send("**Check Your DM**");
