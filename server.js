@@ -117,6 +117,8 @@ client.on("message", async message => {
   if (message.content.startsWith(prefix + "invite")) {
     let invite = new Discord.MessageEmbed();
 
+ aliases: ["inv"],
+
     message.channel.send("**Check Your DM**");
     message.author.send(
       "`invite link`https://discord.com/api/oauth2/authorize?client_id=733469607175913593&permissions=8&scope=bot"
