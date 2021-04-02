@@ -117,7 +117,8 @@ client.on("message", async message => {
   if (message.content.startsWith(prefix + "invite")) {
     let invite = new Discord.MessageEmbed();
 
- aliases: ["inv"],
+if (message.content.startsWith(prefix + "inv")) {
+    let invite = new Discord.MessageEmbed();
 
     message.channel.send("**Check Your DM**");
     message.author.send(
