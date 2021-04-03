@@ -144,12 +144,6 @@ client.on("message", msg => {
 });
 
 client.on("message", msg => {
-  if (msg.content === "Reklam") {
-    msg.reply("** farmw  https://discord.gg/99KsGZHrsv**");
-  }
-});
-
-client.on("message", msg => {
   if (msg.content === "hi") {
     msg.reply("**baxer bey  **");
   }
@@ -157,6 +151,12 @@ client.on("message", msg => {
 
 client.on("message", msg => {
   if (msg.content === "reklam") {
+    msg.reply("**bo rol ba dasteki bnera dl   **");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "Reklam") {
     msg.reply("**bo rol ba dasteki bnera dl   **");
   }
 });
