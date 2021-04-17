@@ -41,7 +41,7 @@ const prefix = "b/";
 const cooldown = new Set();
 const cdtime = 7;
 /////////////////////////////////////
-client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.yTqQIZg2vDrm2kCcMtAxeow--KU");
+client.login("NzMzNDY5NjA3MTc1OTEzNTkz.XxDmzQ.-wBEKpvuc_mOJaHjik6NmVETTl4");
 ///////////////////////////////////////////////////////////////////////////////
 
 client.on("ready", () => {
